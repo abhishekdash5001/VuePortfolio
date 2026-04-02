@@ -14,6 +14,7 @@ const { result } =
     useQuery<QueryQuery>(HELLO_QUERY)
   )
 
+console.log('ENV URL:', useRuntimeConfig().public.graphqlUrl)
 </script>
 
 <template>
