@@ -1,4 +1,23 @@
+<script setup lang="ts">
+import { useQuery } from '@vue/apollo-composable'
+import { useApollo } from '~/composables/useApollo'
+import { HELLO_QUERY } from '~/graphql/queries'
+
+import {
+ type QueryQuery,
+ type QueryQueryVariables,
+} from '~/graphql/generated'
+
+
+const { result } =
+  useApollo()(() =>
+    useQuery<QueryQuery>(HELLO_QUERY)
+  )
+
+</script>
+
 <template>
+ {{ result?.hello }}
   <div>
     <UPageHero
       title="Nuxt Starter Template"
