@@ -9,12 +9,18 @@ import {
 } from '~/graphql/generated'
 
 
+definePageMeta({
+  middleware: 'redirect-root'
+})
+
 const { result } =
   useApollo()(() =>
     useQuery<QueryQuery>(HELLO_QUERY)
   )
 
 console.log('ENV URL:', useRuntimeConfig().public.graphqlUrl)
+
+
 </script>
 
 <template>
