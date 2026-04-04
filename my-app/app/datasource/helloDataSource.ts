@@ -2,13 +2,16 @@
 
 import { useQuery } from "@vue/apollo-composable";
 import { useApollo } from "~/composables/useApollo";
-import { HELLO_QUERY } from "~/graphql/queries";
+import { PROFILE_QUERY } from "~/graphql/queries";
 
-import { type QueryQuery, type QueryQueryVariables } from "~/graphql/generated";
+import {
+  type ProfileQuery,
+  type ProfileQueryVariables,
+} from "~/graphql/generated";
 
 export function fetchHello() {
   return useApollo()(() =>
-    useQuery<QueryQuery, QueryQueryVariables>(HELLO_QUERY, null, {
+    useQuery<ProfileQuery, ProfileQueryVariables>(PROFILE_QUERY, null, {
       fetchPolicy: "cache-first",
     }),
   );

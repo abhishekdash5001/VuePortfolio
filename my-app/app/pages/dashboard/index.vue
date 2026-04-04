@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useHello } from '~/composables/useHello'
+
+
 const { message, loading, error } = useHello();
 </script>
 
