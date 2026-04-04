@@ -1,7 +1,7 @@
-// dataSources/helloDataSource.ts
+// datasource/profileDataSource.ts
 
-import { useQuery } from "@vue/apollo-composable";
 import { useApollo } from "~/composables/useApollo";
+
 import { PROFILE_QUERY } from "~/graphql/queries";
 
 import {
@@ -9,10 +9,11 @@ import {
   type ProfileQueryVariables,
 } from "~/graphql/generated";
 
-export function fetchHello() {
-  return useApollo()(() =>
-    useQuery<ProfileQuery, ProfileQueryVariables>(PROFILE_QUERY, null, {
-      fetchPolicy: "cache-first",
-    }),
-  );
+export function fetchProfile() {
+  const client = useApollo();
+
+  return client.query<ProfileQuery, ProfileQueryVariables>({
+    query: PROFILE_QUERY,
+    fetchPolicy: "no-cache",
+  });
 }

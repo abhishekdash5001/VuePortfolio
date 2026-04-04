@@ -2,11 +2,15 @@
 import { useHello } from '~/composables/useHello'
 
 
-const { message, loading, error } = useHello();
+const {error,execute,profile,loading} = useHello();
+
+onMounted(()=>{
+  execute();
+})
 </script>
 
 <template>
   <div>
-  {{ message }}
+  {{ profile }}
   </div>
 </template>
