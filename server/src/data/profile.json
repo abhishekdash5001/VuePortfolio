@@ -1,0 +1,68 @@
+{
+  "name": "Abhishek Dash",
+  "title": "Senior UI Developer",
+  "location": "India",
+  "careerStartDate": "2015-12-21",
+  "bio": "A creative enthusiast with 9 years of experience as a UI Developer. Expertise in Vue 3, GraphQL (Apollo Client), Pinia, and React.js, along with modern JavaScript (ES6+), performance optimization, coding standards, and scalable architectures. Proficient in Node.js, MongoDB, Next.js, Jest, and Happo for full-stack and testing capabilities. Additional experience with TypeScript and modern testing frameworks like Vitest and Testing Library. Working knowledge of Angular. Known for out-of-the-box problem solving skills.",
+  "skills": {
+    "frontend": [
+      "HTML",
+      "CSS",
+      "SCSS",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "React.js",
+      "Next.js",
+      "Vue 3",
+      "Angular (Working Knowledge)"
+    ],
+
+    "graphql": [
+      "GraphQL",
+      "Apollo Client"
+    ],
+
+    "styling": [
+      "Tailwind",
+      "Bootstrap",
+      "SCSS"
+    ],
+
+    "cms": [
+      "Umbraco",
+      "Contentful",
+      "BigCommerce"
+    ],
+
+    "backend": [
+      "Node.js",
+      "MongoDB"
+    ],
+
+    "testing": [
+      "Jest",
+      "Vitest",
+      "Testing Library",
+      "Happo"
+    ],
+
+    "other": [
+      "Performance Optimization",
+      "Scalable Architecture",
+      "Coding Standards",
+      "Pinia"
+    ]
+  },
+  "contact":{
+    "email":"abhishekdash5001@gmail.com"
+    
+  },
+  "social": {
+    "github": "https://github.com/username",
+    "linkedin": "https://linkedin.com/in/username",
+    "twitter": "",
+    "leetcode": ""
+  },
+
+  "tagline": "Out-of-the-box problem solver with strong focus on performance and scalability"
+}
