@@ -20,5 +20,5 @@ export function useApollo() {
     });
   }
 
-  return provideApolloClient(apolloClient);
+  return apolloClient;
 }

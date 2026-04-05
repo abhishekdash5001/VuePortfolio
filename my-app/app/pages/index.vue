@@ -1,30 +1,21 @@
 <script setup lang="ts">
-import { useQuery } from '@vue/apollo-composable'
-import { useApollo } from '~/composables/useApollo'
-import { HELLO_QUERY } from '~/graphql/queries'
 
-import {
- type QueryQuery,
- type QueryQueryVariables,
-} from '~/graphql/generated'
+
+
+
 
 
 definePageMeta({
   middleware: 'redirect-root'
 })
 
-const { result } =
-  useApollo()(() =>
-    useQuery<QueryQuery>(HELLO_QUERY)
-  )
 
-console.log('ENV URL:', useRuntimeConfig().public.graphqlUrl)
 
 
 </script>
 
 <template>
- {{ result?.hello }}
+
   <div>
     <UPageHero
       title="Nuxt Starter Template"

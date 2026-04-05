@@ -1,15 +1,35 @@
-import { fetchHello } from "~/datasource/helloDataSource";
+import { ref } from "vue";
+import { fromPromise } from "neverthrow";
+
+import { fetchProfile } from "~/datasource/helloDataSource";
 
 export function useHello() {
-  const { result, loading, error } = fetchHello();
+  const profile = ref(null);
+  const error = ref(null);
+  const loading = ref(false);
 
-  const message = computed(() => {
-    return result.value?.hello ?? "";
-  });
+  async function execute() {
+    loading.value = true;
+
+    const result = await fromPromise(
+      fetchProfile().then((res) => res.data.profile),
+
+      (e) => e as Error,
+    );
+
+    if (result.isOk()) {
+      profile.value = result.value;
+    } else {
+      error.value = result.error;
+    }
+
+    loading.value = false;
+  }
 
   return {
-    message,
-    loading,
+    execute,
+    profile,
     error,
+    loading,
   };
 }
