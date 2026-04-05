@@ -32,4 +32,9 @@ export default defineNuxtConfig({
       graphqlUrl: process.env.NUXT_PUBLIC_GRAPHQL_URL || "",
     },
   },
+  nitro: {
+    externals: {
+      inline: ["tslib"],
+    },
+  },
 });
