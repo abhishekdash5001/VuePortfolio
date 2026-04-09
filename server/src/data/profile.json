@@ -1,9 +1,9 @@
 {
   "name": "Abhishek Dash",
-  "title": "Senior UI Developer",
+  "title": "Senior Developer",
   "location": "India",
   "careerStartDate": "2015-12-21",
-  "bio": "A creative enthusiast with 9 years of experience as a UI Developer. Expertise in Vue 3, GraphQL (Apollo Client), Pinia, and React.js, along with modern JavaScript (ES6+), performance optimization, coding standards, and scalable architectures. Proficient in Node.js, MongoDB, Next.js, Jest, and Happo for full-stack and testing capabilities. Additional experience with TypeScript and modern testing frameworks like Vitest and Testing Library. Working knowledge of Angular. Known for out-of-the-box problem solving skills.",
+  "bio": "A creative enthusiast working as a MERN Developer with expertise in React.js, Vue 3, and GraphQL (Apollo Client), along with TypeScript, JavaScript, HTML, and CSS. Strong experience with Pinia, performance optimization, coding standards, and scalable architectures. Proficient in Node.js, MongoDB, Next.js, Jest, and Happo for full-stack and testing capabilities. Additional experience with modern testing frameworks like Vitest and Testing Library. Working knowledge of Angular. Known for out-of-the-box problem-solving skills.",
   "skills": {
     "frontend": [
       "HTML",
@@ -16,36 +16,30 @@
       "Vue 3",
       "Angular (Working Knowledge)"
     ],
-
     "graphql": [
       "GraphQL",
       "Apollo Client"
     ],
-
     "styling": [
       "Tailwind",
       "Bootstrap",
       "SCSS"
     ],
-
     "cms": [
       "Umbraco",
       "Contentful",
       "BigCommerce"
     ],
-
     "backend": [
       "Node.js",
       "MongoDB"
     ],
-
     "testing": [
       "Jest",
       "Vitest",
       "Testing Library",
       "Happo"
     ],
-
     "other": [
       "Performance Optimization",
       "Scalable Architecture",
@@ -53,16 +47,18 @@
       "Pinia"
     ]
   },
-  "contact":{
-    "email":"abhishekdash5001@gmail.com"
-    
+  "contact": {
+    "email": "abhishekdash5001@gmail.com"
+  },
+  "image": {
+    "url": "https://res.cloudinary.com/dift1cspg/image/upload/v1728126252/protfolio/xkpllr8rhevev3bucgy2.jpg",
+    "alt": "profile picture"
   },
   "social": {
-    "github": "https://github.com/username",
-    "linkedin": "https://linkedin.com/in/username",
+    "github": "https://github.com/abhishekdash5001",
+    "linkedin": "https://www.linkedin.com/in/abhishek-dash-3157bb13b",
     "twitter": "",
     "leetcode": ""
   },
-
   "tagline": "Out-of-the-box problem solver with strong focus on performance and scalability"
 }
