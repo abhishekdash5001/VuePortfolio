@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "rootDir": "./",
+    "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,
     "strict": true,
@@ -18,6 +18,8 @@
     "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force"
-  }
+    "moduleDetection": "force",
+  },
+  "include": ["src/**/*"],
+  "exclude": ["codegen.ts"]
 }
