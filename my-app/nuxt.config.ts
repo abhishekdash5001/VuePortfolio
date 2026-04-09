@@ -1,7 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "@nuxt/ui", "@nuxt/icon"],
-
+  vite: {
+    optimizeDeps: {
+      include: ["@vueuse/core"],
+    },
+  },
   devtools: {
     enabled: true,
   },

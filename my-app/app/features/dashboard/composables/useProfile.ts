@@ -27,6 +27,7 @@ const defaultState:Profile={
 
 export function useProfile(): ProfileResult {
   const error = ref<string>("");
+  const toast = useToast()
   const loading = ref(false);
 
   const state = reactive<Profile>({...defaultState});
@@ -39,6 +40,15 @@ export function useProfile(): ProfileResult {
 
       (e) => e as Error,
     );
+
+    if(result.isErr()){
+      error.value='Failed to fetch Profiles details'
+      toast.add({
+        title: 'Error',
+        description: error.value,
+        color: 'error'
+      })
+    }
 
     if (result.isOk()) {
       Object.assign(state, result.value);
