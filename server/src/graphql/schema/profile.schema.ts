@@ -1,44 +1,51 @@
-
 import gql from "graphql-tag";
 
-
 export const profileTypeDefs = gql`
+  type Skills {
+    frontend: [String!]!
+    backend: [String!]!
+    database: [String!]!
+    devops: [String!]!
+  }
 
+  type Social {
+    github: String
+    linkedin: String!
+    twitter: String
+    leetcode: String
+  }
 
-type Skills {
-  frontend:[String!]!
-  backend:[String!]!
-  database:[String!]!
-  devops:[String!]!
-}
+  type Contact {
+    email: String!
+    phone: String
+    website: String
+  }
 
-type Social {
-github:String
-linkedin:String!
-twitter:String
-leetcode:String
+  type Image {
+    url: String!
+    alt: String!
+  }
 
-}
+  type ProfileValue {
+    name: String!
+    title: String!
+    location: String!
+    careerStartDate: Date!
+    bio:String!
+    skills: Skills!
+    social: Social!
+    tagline: String!
+    contact: Contact!
+    image: Image!
+  }
 
-type Contact {
-  email: String!
-  phone: String
-  website: String
-}
+  type ProfileError {
+    message: String!
+  }
 
-type Profile {
-name:String!
-title:String!
-location:String!
-careerStartDate:Date!
-skills:Skills!
-social:Social!
-tagline:String!
-contact:Contact!
-}
+  union ProfileResult = ProfileValue | ProfileError
 
-type Query {
-  profile: Profile!
-}
-
+  type Query {
+    profile: ProfileResult
+  }
 `;

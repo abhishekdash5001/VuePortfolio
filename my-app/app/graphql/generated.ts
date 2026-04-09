@@ -22,10 +22,25 @@ export type Contact = {
   website?: Maybe<Scalars['String']['output']>;
 };
 
-export type Profile = {
-  __typename?: 'Profile';
+export type Image = {
+  __typename?: 'Image';
+  alt: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+};
+
+export type ProfileError = {
+  __typename?: 'ProfileError';
+  message: Scalars['String']['output'];
+};
+
+export type ProfileResult = ProfileError | ProfileValue;
+
+export type ProfileValue = {
+  __typename?: 'ProfileValue';
+  bio: Scalars['String']['output'];
   careerStartDate: Scalars['Date']['output'];
   contact: Contact;
+  image: Image;
   location: Scalars['String']['output'];
   name: Scalars['String']['output'];
   skills: Skills;
@@ -36,7 +51,7 @@ export type Profile = {
 
 export type Query = {
   __typename?: 'Query';
-  profile: Profile;
+  profile?: Maybe<ProfileResult>;
 };
 
 export type Skills = {
@@ -58,4 +73,7 @@ export type Social = {
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProfileQuery = { __typename?: 'Query', profile: { __typename?: 'Profile', name: string, careerStartDate: any, location: string, title: string } };
+export type ProfileQuery = { __typename?: 'Query', profile?:
+    | { __typename?: 'ProfileError', message: string }
+    | { __typename?: 'ProfileValue', name: string, bio: string, title: string, social: { __typename?: 'Social', github?: string | null, linkedin: string }, image: { __typename?: 'Image', alt: string, url: string } }
+   | null };
