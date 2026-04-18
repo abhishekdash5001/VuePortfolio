@@ -14,6 +14,6 @@ export function fetchProfile() {
 
   return client.query<ProfileQuery, ProfileQueryVariables>({
     query: PROFILE_QUERY,
-    fetchPolicy: "no-cache",
+    fetchPolicy: "cache-first",
   });
 }

@@ -31,7 +31,7 @@ onMounted(() => {
   <div class="lg:col-span-10">
     <div class="relative isolate">
       <UContainer
-        class="flex flex-col lg:grid gap-16 sm:gap-y-24 py-18 sm:py-24 lg:py-32"
+        class="flex flex-col lg:grid gap-16 sm:gap-y-24 py-9"
       >
         <div class="text-center" >
           <div class="header">

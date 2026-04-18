@@ -1,5 +1,5 @@
 import { readJson } from "../utils/readJson"
-import type { Resolvers, ProfileResult } from '../../generated/graphql'
+import type { ProfileResult } from '../../generated/graphql'
 
 
 export const profileResolvers={
