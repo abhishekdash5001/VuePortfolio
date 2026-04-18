@@ -52,6 +52,7 @@ export type ProfileValue = {
 export type Query = {
   __typename?: 'Query';
   profile?: Maybe<ProfileResult>;
+  techStack?: Maybe<TechStackResult>;
 };
 
 export type Skills = {
@@ -70,10 +71,36 @@ export type Social = {
   twitter?: Maybe<Scalars['String']['output']>;
 };
 
+export type TechStack = {
+  __typename?: 'TechStack';
+  name: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+};
+
+export type TechStackError = {
+  __typename?: 'TechStackError';
+  message: Scalars['String']['output'];
+};
+
+export type TechStackResult = TechStackError | TechStackValue;
+
+export type TechStackValue = {
+  __typename?: 'TechStackValue';
+  stacks: Array<TechStack>;
+};
+
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProfileQuery = { __typename?: 'Query', profile?:
     | { __typename?: 'ProfileError', message: string }
     | { __typename?: 'ProfileValue', name: string, bio: string, title: string, social: { __typename?: 'Social', github?: string | null, linkedin: string }, image: { __typename?: 'Image', alt: string, url: string } }
+   | null };
+
+export type TechStackQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TechStackQuery = { __typename?: 'Query', techStack?:
+    | { __typename?: 'TechStackError', message: string }
+    | { __typename?: 'TechStackValue', stacks: Array<{ __typename?: 'TechStack', name: string, url: string }> }
    | null };

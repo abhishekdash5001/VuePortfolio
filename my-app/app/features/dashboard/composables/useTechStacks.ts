@@ -1,44 +1,34 @@
 import { fromPromise } from "neverthrow";
 
-import { fetchProfile } from "~/datasource/getProfile";
+import { fetchTechStack } from "~/datasource/getTechStack";
 
-import type { Profile } from "../types";
+import type { TechStackValue } from "../types";
 
-interface ProfileResult {
-  state: Profile | null;
+interface TechStackResult {
+  state: TechStackValue ;
   execute: () => Promise<void>;
   loading: Ref<boolean>;
   error: Ref<string>;
   completed:Ref<boolean>
 }
 
-const defaultState:Profile={
-  name: "",
-  title:'',
-  bio:'',
-  social:{
-    linkedin:'',
-    github:''
-  },
-  image:{
-    alt:'',
-    url:''
-  }
+const defaultState:TechStackValue={
+ stacks:[]
 }
 
-export function useProfile(): ProfileResult {
+export function useTechStacks(): TechStackResult {
   const error = ref<string>("");
   const toast = useToast()
   const loading = ref(false);
   const completed = ref(false);
 
-  const state = reactive<Profile>({...defaultState});
+  const state = reactive<TechStackValue>({...defaultState});
 
   async function execute() {
     loading.value = true;
 
     const result = await fromPromise(
-      fetchProfile().then((res) => res.data.profile),
+      fetchTechStack().then((res) => res.data.techStack),
 
       (e) => e as Error,
     );

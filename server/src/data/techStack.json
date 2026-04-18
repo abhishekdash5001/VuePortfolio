@@ -1,0 +1,50 @@
+[
+    {
+      "name": "Vue",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/250px-Vue.js_Logo_2.svg.png"
+    },
+    {
+      "name": "React",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/React_Logo_SVG.svg/330px-React_Logo_SVG.svg.png"
+    },
+    {
+      "name": "Next.js",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"
+    },
+    {
+      "name": "TypeScript",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg"
+    },
+    {
+      "name": "JavaScript",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+    },
+    {
+      "name": "Angular",
+      "url": "https://angular.dev/assets/images/ng-image.jpg"
+    },
+    {
+      "name": "AWS",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+    },
+    {
+      "name": "Contentful",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAVNvC7f8zczrVskFplYYeJp52eSpSDcPI4g&s"
+    },
+    {
+      "name": "HTML",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+    },
+    {
+      "name": "CSS",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+    },
+    {
+      "name": "SCSS",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg"
+    },
+    {
+      "name": "Express",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png"
+    }
+  ]

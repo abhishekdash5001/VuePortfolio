@@ -38,6 +38,7 @@ export type ProfileResult = ProfileError | ProfileValue;
 
 export type ProfileValue = {
   __typename?: 'ProfileValue';
+  bio: Scalars['String']['output'];
   careerStartDate: Scalars['Date']['output'];
   contact: Contact;
   image: Image;
@@ -52,6 +53,7 @@ export type ProfileValue = {
 export type Query = {
   __typename?: 'Query';
   profile?: Maybe<ProfileResult>;
+  techStack?: Maybe<TechStackResult>;
 };
 
 export type Skills = {
@@ -68,6 +70,24 @@ export type Social = {
   leetcode?: Maybe<Scalars['String']['output']>;
   linkedin: Scalars['String']['output'];
   twitter?: Maybe<Scalars['String']['output']>;
+};
+
+export type TechStack = {
+  __typename?: 'TechStack';
+  name: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+};
+
+export type TechStackError = {
+  __typename?: 'TechStackError';
+  message: Scalars['String']['output'];
+};
+
+export type TechStackResult = TechStackError | TechStackValue;
+
+export type TechStackValue = {
+  __typename?: 'TechStackValue';
+  stacks: Array<TechStack>;
 };
 
 
@@ -145,6 +165,10 @@ export type ResolversUnionTypes<_RefType extends Record<string, unknown>> = {
     | ( ProfileError )
     | ( ProfileValue )
   ;
+  TechStackResult:
+    | ( TechStackError )
+    | ( TechStackValue )
+  ;
 };
 
 
@@ -161,6 +185,10 @@ export type ResolversTypes = {
   Skills: ResolverTypeWrapper<Skills>;
   Social: ResolverTypeWrapper<Social>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  TechStack: ResolverTypeWrapper<TechStack>;
+  TechStackError: ResolverTypeWrapper<TechStackError>;
+  TechStackResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['TechStackResult']>;
+  TechStackValue: ResolverTypeWrapper<TechStackValue>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -176,6 +204,10 @@ export type ResolversParentTypes = {
   Skills: Skills;
   Social: Social;
   String: Scalars['String']['output'];
+  TechStack: TechStack;
+  TechStackError: TechStackError;
+  TechStackResult: ResolversUnionTypes<ResolversParentTypes>['TechStackResult'];
+  TechStackValue: TechStackValue;
 };
 
 export type ContactResolvers<ContextType = any, ParentType extends ResolversParentTypes['Contact'] = ResolversParentTypes['Contact']> = {
@@ -203,6 +235,7 @@ export type ProfileResultResolvers<ContextType = any, ParentType extends Resolve
 };
 
 export type ProfileValueResolvers<ContextType = any, ParentType extends ResolversParentTypes['ProfileValue'] = ResolversParentTypes['ProfileValue']> = {
+  bio?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   careerStartDate?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   contact?: Resolver<ResolversTypes['Contact'], ParentType, ContextType>;
   image?: Resolver<ResolversTypes['Image'], ParentType, ContextType>;
@@ -217,6 +250,7 @@ export type ProfileValueResolvers<ContextType = any, ParentType extends Resolver
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   profile?: Resolver<Maybe<ResolversTypes['ProfileResult']>, ParentType, ContextType>;
+  techStack?: Resolver<Maybe<ResolversTypes['TechStackResult']>, ParentType, ContextType>;
 };
 
 export type SkillsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Skills'] = ResolversParentTypes['Skills']> = {
@@ -233,6 +267,25 @@ export type SocialResolvers<ContextType = any, ParentType extends ResolversParen
   twitter?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 };
 
+export type TechStackResolvers<ContextType = any, ParentType extends ResolversParentTypes['TechStack'] = ResolversParentTypes['TechStack']> = {
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+};
+
+export type TechStackErrorResolvers<ContextType = any, ParentType extends ResolversParentTypes['TechStackError'] = ResolversParentTypes['TechStackError']> = {
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type TechStackResultResolvers<ContextType = any, ParentType extends ResolversParentTypes['TechStackResult'] = ResolversParentTypes['TechStackResult']> = {
+  __resolveType: TypeResolveFn<'TechStackError' | 'TechStackValue', ParentType, ContextType>;
+};
+
+export type TechStackValueResolvers<ContextType = any, ParentType extends ResolversParentTypes['TechStackValue'] = ResolversParentTypes['TechStackValue']> = {
+  stacks?: Resolver<Array<ResolversTypes['TechStack']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
   Contact?: ContactResolvers<ContextType>;
   Date?: GraphQLScalarType;
@@ -243,5 +296,9 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
   Skills?: SkillsResolvers<ContextType>;
   Social?: SocialResolvers<ContextType>;
+  TechStack?: TechStackResolvers<ContextType>;
+  TechStackError?: TechStackErrorResolvers<ContextType>;
+  TechStackResult?: TechStackResultResolvers<ContextType>;
+  TechStackValue?: TechStackValueResolvers<ContextType>;
 };
 

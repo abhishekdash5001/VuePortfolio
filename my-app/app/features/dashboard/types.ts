@@ -1,4 +1,4 @@
-import { type ProfileQuery ,type Social} from "~/graphql/generated";
+import { type ProfileQuery ,type Social, type TechStackValue} from "~/graphql/generated";
 
 export type Profile = Extract<
   ProfileQuery["profile"],
@@ -6,6 +6,10 @@ export type Profile = Extract<
 >;
 
 export type {Social};
+export type {TechStackValue}
+
+
+export  type TechStack = TechStackValue["stacks"][number];
 
 export type NavigationItem = {
   label: string;
