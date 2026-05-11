@@ -15,28 +15,28 @@
   },
   {
     "companyName": "Preqin",
-    "designation": "Senior Engineer",
+    "designation": "Senior Software Engineer",
     "startDate": "2021-12-01",
     "endDate": "2024-03-01",
     "color": { "name": "Coral Red", "hex": "#FF6363" }
   },
   {
     "companyName": "Incedo",
-    "designation": "Software Engineer",
+    "designation": "Senior Software Engineer",
     "startDate": "2020-05-01",
     "endDate": "2021-12-01",
     "color": { "name": "Sky Cyan", "hex": "#38BDF8" }
   },
   {
     "companyName": "HSC",
-    "designation": "Developer",
+    "designation": "Engineer",
     "startDate": "2018-04-01",
     "endDate": "2020-05-01",
     "color": { "name": "Violet Pop", "hex": "#A855F7" }
   },
   {
     "companyName": "TCS",
-    "designation": "Software Developer",
+    "designation": "System Analyst",
     "startDate": "2015-12-01",
     "endDate": "2018-04-01",
     "color": { "name": "Amber Gold", "hex": "#F59E0B" }
