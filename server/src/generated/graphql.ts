@@ -16,11 +16,38 @@ export type Scalars = {
   Date: { input: any; output: any; }
 };
 
+export type Color = {
+  __typename?: 'Color';
+  hex: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+};
+
 export type Contact = {
   __typename?: 'Contact';
   email: Scalars['String']['output'];
   phone?: Maybe<Scalars['String']['output']>;
   website?: Maybe<Scalars['String']['output']>;
+};
+
+export type Experience = {
+  __typename?: 'Experience';
+  color: Color;
+  companyName: Scalars['String']['output'];
+  designation: Scalars['String']['output'];
+  endDate?: Maybe<Scalars['Date']['output']>;
+  startDate: Scalars['Date']['output'];
+};
+
+export type ExperienceError = {
+  __typename?: 'ExperienceError';
+  message: Scalars['String']['output'];
+};
+
+export type ExperienceResult = ExperienceError | ExperienceValue;
+
+export type ExperienceValue = {
+  __typename?: 'ExperienceValue';
+  experience: Array<Experience>;
 };
 
 export type Image = {
@@ -44,6 +71,7 @@ export type ProfileValue = {
   image: Image;
   location: Scalars['String']['output'];
   name: Scalars['String']['output'];
+  shortBio: Scalars['String']['output'];
   skills: Skills;
   social: Social;
   tagline: Scalars['String']['output'];
@@ -52,6 +80,7 @@ export type ProfileValue = {
 
 export type Query = {
   __typename?: 'Query';
+  experience?: Maybe<ExperienceResult>;
   profile?: Maybe<ProfileResult>;
   techStack?: Maybe<TechStackResult>;
 };
@@ -75,6 +104,7 @@ export type Social = {
 export type TechStack = {
   __typename?: 'TechStack';
   name: Scalars['String']['output'];
+  theme: Theme;
   url: Scalars['String']['output'];
 };
 
@@ -89,6 +119,12 @@ export type TechStackValue = {
   __typename?: 'TechStackValue';
   stacks: Array<TechStack>;
 };
+
+export enum Theme {
+  All = 'all',
+  Dark = 'dark',
+  Light = 'light'
+}
 
 
 
@@ -161,6 +197,10 @@ export type DirectiveResolverFn<TResult = Record<PropertyKey, never>, TParent = 
 
 /** Mapping of union types */
 export type ResolversUnionTypes<_RefType extends Record<string, unknown>> = {
+  ExperienceResult:
+    | ( ExperienceError )
+    | ( ExperienceValue )
+  ;
   ProfileResult:
     | ( ProfileError )
     | ( ProfileValue )
@@ -175,8 +215,13 @@ export type ResolversUnionTypes<_RefType extends Record<string, unknown>> = {
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Color: ResolverTypeWrapper<Color>;
   Contact: ResolverTypeWrapper<Contact>;
   Date: ResolverTypeWrapper<Scalars['Date']['output']>;
+  Experience: ResolverTypeWrapper<Experience>;
+  ExperienceError: ResolverTypeWrapper<ExperienceError>;
+  ExperienceResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['ExperienceResult']>;
+  ExperienceValue: ResolverTypeWrapper<ExperienceValue>;
   Image: ResolverTypeWrapper<Image>;
   ProfileError: ResolverTypeWrapper<ProfileError>;
   ProfileResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['ProfileResult']>;
@@ -189,13 +234,19 @@ export type ResolversTypes = {
   TechStackError: ResolverTypeWrapper<TechStackError>;
   TechStackResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['TechStackResult']>;
   TechStackValue: ResolverTypeWrapper<TechStackValue>;
+  Theme: Theme;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
+  Color: Color;
   Contact: Contact;
   Date: Scalars['Date']['output'];
+  Experience: Experience;
+  ExperienceError: ExperienceError;
+  ExperienceResult: ResolversUnionTypes<ResolversParentTypes>['ExperienceResult'];
+  ExperienceValue: ExperienceValue;
   Image: Image;
   ProfileError: ProfileError;
   ProfileResult: ResolversUnionTypes<ResolversParentTypes>['ProfileResult'];
@@ -210,6 +261,11 @@ export type ResolversParentTypes = {
   TechStackValue: TechStackValue;
 };
 
+export type ColorResolvers<ContextType = any, ParentType extends ResolversParentTypes['Color'] = ResolversParentTypes['Color']> = {
+  hex?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+};
+
 export type ContactResolvers<ContextType = any, ParentType extends ResolversParentTypes['Contact'] = ResolversParentTypes['Contact']> = {
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   phone?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -219,6 +275,28 @@ export type ContactResolvers<ContextType = any, ParentType extends ResolversPare
 export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Date'], any> {
   name: 'Date';
 }
+
+export type ExperienceResolvers<ContextType = any, ParentType extends ResolversParentTypes['Experience'] = ResolversParentTypes['Experience']> = {
+  color?: Resolver<ResolversTypes['Color'], ParentType, ContextType>;
+  companyName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  designation?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  endDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType>;
+  startDate?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
+};
+
+export type ExperienceErrorResolvers<ContextType = any, ParentType extends ResolversParentTypes['ExperienceError'] = ResolversParentTypes['ExperienceError']> = {
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type ExperienceResultResolvers<ContextType = any, ParentType extends ResolversParentTypes['ExperienceResult'] = ResolversParentTypes['ExperienceResult']> = {
+  __resolveType: TypeResolveFn<'ExperienceError' | 'ExperienceValue', ParentType, ContextType>;
+};
+
+export type ExperienceValueResolvers<ContextType = any, ParentType extends ResolversParentTypes['ExperienceValue'] = ResolversParentTypes['ExperienceValue']> = {
+  experience?: Resolver<Array<ResolversTypes['Experience']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
 
 export type ImageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Image'] = ResolversParentTypes['Image']> = {
   alt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -241,6 +319,7 @@ export type ProfileValueResolvers<ContextType = any, ParentType extends Resolver
   image?: Resolver<ResolversTypes['Image'], ParentType, ContextType>;
   location?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  shortBio?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   skills?: Resolver<ResolversTypes['Skills'], ParentType, ContextType>;
   social?: Resolver<ResolversTypes['Social'], ParentType, ContextType>;
   tagline?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -249,6 +328,7 @@ export type ProfileValueResolvers<ContextType = any, ParentType extends Resolver
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  experience?: Resolver<Maybe<ResolversTypes['ExperienceResult']>, ParentType, ContextType>;
   profile?: Resolver<Maybe<ResolversTypes['ProfileResult']>, ParentType, ContextType>;
   techStack?: Resolver<Maybe<ResolversTypes['TechStackResult']>, ParentType, ContextType>;
 };
@@ -269,6 +349,7 @@ export type SocialResolvers<ContextType = any, ParentType extends ResolversParen
 
 export type TechStackResolvers<ContextType = any, ParentType extends ResolversParentTypes['TechStack'] = ResolversParentTypes['TechStack']> = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  theme?: Resolver<ResolversTypes['Theme'], ParentType, ContextType>;
   url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 };
 
@@ -287,8 +368,13 @@ export type TechStackValueResolvers<ContextType = any, ParentType extends Resolv
 };
 
 export type Resolvers<ContextType = any> = {
+  Color?: ColorResolvers<ContextType>;
   Contact?: ContactResolvers<ContextType>;
   Date?: GraphQLScalarType;
+  Experience?: ExperienceResolvers<ContextType>;
+  ExperienceError?: ExperienceErrorResolvers<ContextType>;
+  ExperienceResult?: ExperienceResultResolvers<ContextType>;
+  ExperienceValue?: ExperienceValueResolvers<ContextType>;
   Image?: ImageResolvers<ContextType>;
   ProfileError?: ProfileErrorResolvers<ContextType>;
   ProfileResult?: ProfileResultResolvers<ContextType>;

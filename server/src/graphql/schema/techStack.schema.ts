@@ -5,9 +5,16 @@ export const techStackTypeDefs = gql`
     message: String!
   }
 
+  enum Theme {
+    dark
+    light
+    all
+  }
+
   type TechStack {
     name: String!
     url: String!
+    theme: Theme!
   }
 
   type TechStackValue {

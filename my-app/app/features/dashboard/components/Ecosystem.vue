@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import type { TechStack } from "../types";
+import  {type TechStack,Theme } from "../types";
+
+const colorMode = useColorMode();
 
 defineProps<{
   isLoading: boolean;
@@ -10,14 +12,16 @@ defineProps<{
 <template>
   <UMarquee pause-on-hover class="[--duration:40s]">
     <template v-for="(stack, index) in stacks" :key="stack.name + index">
-      <img
-        :src="stack.url"
-        :alt="stack.name"
-        height="100"
-        width="200"
-        class="w-[200px] h-[100px] object-contain shrink-0 techStack-animation"
-        :style="{ '--delay': `${index * 1}s` }"
-      />
+      <temmplate v-if="stack.theme === colorMode.value ||  stack.theme === Theme.All">
+        <img
+          :src="stack.url"
+          :alt="stack.name"
+          height="100"
+          width="200"
+          class="w-[200px] h-[100px] object-cover shrink-0 techStack-animation"
+          :style="{ '--delay': `${index * 0.25}s` }"
+        />
+      </temmplate>
     </template>
   </UMarquee>
 </template>
