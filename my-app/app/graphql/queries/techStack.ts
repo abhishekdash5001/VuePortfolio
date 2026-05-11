@@ -9,6 +9,7 @@ query TechStack {
       stacks {
         name
         url
+        theme
       }
     }
     ... on TechStackError{

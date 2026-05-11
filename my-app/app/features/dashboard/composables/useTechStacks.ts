@@ -2,7 +2,7 @@ import { fromPromise } from "neverthrow";
 
 import { fetchTechStack } from "~/datasource/getTechStack";
 
-import type { TechStackValue } from "../types";
+import  { type TechStackValue,ERRORS } from "../types";
 
 interface TechStackResult {
   state: TechStackValue ;
@@ -34,7 +34,7 @@ export function useTechStacks(): TechStackResult {
     );
 
     if(result.isErr()){
-      error.value='Failed to fetch Profiles details'
+      error.value=ERRORS.techStack
       toast.add({
         title: 'Error',
         description: error.value,

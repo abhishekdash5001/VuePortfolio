@@ -3,16 +3,33 @@ import PrimaryNavigation from "~/features/dashboard/components/PrimaryNavigation
 
 import HeroSection from "~/features/dashboard/components/HeroSection.vue";
 import Ecosystem from "~/features/dashboard/components/Ecosystem.vue";
+import AboutMe from "~/features/dashboard/components/AboutMe.vue";
 
 import { useProfile } from "~/features/dashboard/composables/useProfile";
 import { useTechStacks } from "~/features/dashboard/composables/useTechStacks";
+import { useExperienceAboutMe } from "~/features/dashboard/composables/useExperienceAboutMe";
 
 const profile = useProfile();
 const techStack = useTechStacks();
+const experienceAboutMe = useExperienceAboutMe();
+
+const showAboutMe = computed(
+  () =>
+   Boolean( profile.state &&
+    profile.state.bio !== "" &&
+    experienceAboutMe.state.experience.length > 0,
+));
+
+const isAboutMeLoading = computed(
+  () => experienceAboutMe.loading.value || profile.loading.value,
+);
+
+
 
 onMounted(async () => {
   await profile.execute();
   await techStack.execute();
+  await experienceAboutMe.execute();
 });
 </script>
 
@@ -32,12 +49,22 @@ onMounted(async () => {
         <template>
           <div class="lg:col-span-10">
             <template v-if="techStack.state.stacks">
-              <Ecosystem  :is-loading="techStack.loading.value" :stacks="techStack.state.stacks"/>
+              <Ecosystem
+                :is-loading="techStack.loading.value"
+                :stacks="techStack.state.stacks"
+              />
             </template>
-          
           </div>
         </template>
       </div>
+
+      <template v-if="showAboutMe">
+        <AboutMe
+          :bio="profile.state?.bio"
+          :experiences="experienceAboutMe.state.experience"
+          :isLoading="isAboutMeLoading"
+        />
+      </template>
     </main>
   </UContainer>
 </template>

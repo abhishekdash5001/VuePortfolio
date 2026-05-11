@@ -2,7 +2,7 @@ import { fromPromise } from "neverthrow";
 
 import { fetchProfile } from "~/datasource/getProfile";
 
-import type { Profile } from "../types";
+import  { type Profile,ERRORS } from "../types";
 
 interface ProfileResult {
   state: Profile | null;
@@ -15,6 +15,7 @@ interface ProfileResult {
 const defaultState:Profile={
   name: "",
   title:'',
+  shortBio:'',
   bio:'',
   social:{
     linkedin:'',
@@ -44,7 +45,7 @@ export function useProfile(): ProfileResult {
     );
 
     if(result.isErr()){
-      error.value='Failed to fetch Profiles details'
+      error.value=ERRORS.profile
       toast.add({
         title: 'Error',
         description: error.value,
