@@ -12,7 +12,9 @@ export const PROFILE_QUERY = gql`
         github,
         linkedin
      }
+        shortBio
         bio
+       
          title
         image{
         alt

@@ -28,10 +28,11 @@ export const profileTypeDefs = gql`
 
   type ProfileValue {
     name: String!
+    shortBio: String!
     title: String!
     location: String!
     careerStartDate: Date!
-    bio:String!
+    bio: String!
     skills: Skills!
     social: Social!
     tagline: String!

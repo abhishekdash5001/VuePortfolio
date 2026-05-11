@@ -3,7 +3,7 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client/core";
-import { provideApolloClient } from "@vue/apollo-composable";
+
 
 let apolloClient: ApolloClient<any> | null = null;
 

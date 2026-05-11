@@ -3,6 +3,7 @@
   "title": "Senior Developer",
   "location": "India",
   "careerStartDate": "2015-12-21",
+  "shortBio":"Creative MERN Developer skilled in React.js, Vue 3, GraphQL, TypeScript, Node.js, Next.js, MongoDB, and modern testing tools.Experienced in scalable architectures, performance optimization, coding standards, and creative problem-solving, with working knowledge of Angular.",
   "bio": "A creative enthusiast working as a MERN Developer with expertise in React.js, Vue 3, and GraphQL (Apollo Client), along with TypeScript, JavaScript, HTML, and CSS. Strong experience with Pinia, performance optimization, coding standards, and scalable architectures. Proficient in Node.js, MongoDB, Next.js, Jest, and Happo for full-stack and testing capabilities. Additional experience with modern testing frameworks like Vitest and Testing Library. Working knowledge of Angular. Known for out-of-the-box problem-solving skills.",
   "skills": {
     "frontend": [

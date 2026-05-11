@@ -1,0 +1,44 @@
+[
+  {
+    "companyName": "Patona",
+    "designation": "Senior Software Engineer",
+    "startDate": "2025-01-02",
+    "endDate": null,
+    "color": { "name": "Emerald Glow", "hex": "#00DC82" }
+  },
+  {
+    "companyName": "Altimetrik",
+    "designation": "Staff Engineer",
+    "startDate": "2024-05-01",
+    "endDate": "2025-01-01",
+    "color": { "name": "Indigo Blue", "hex": "#5E6AD2" }
+  },
+  {
+    "companyName": "Preqin",
+    "designation": "Senior Software Engineer",
+    "startDate": "2021-12-01",
+    "endDate": "2024-03-01",
+    "color": { "name": "Coral Red", "hex": "#FF6363" }
+  },
+  {
+    "companyName": "Incedo",
+    "designation": "Senior Software Engineer",
+    "startDate": "2020-05-01",
+    "endDate": "2021-12-01",
+    "color": { "name": "Sky Cyan", "hex": "#38BDF8" }
+  },
+  {
+    "companyName": "HSC",
+    "designation": "Engineer",
+    "startDate": "2018-04-01",
+    "endDate": "2020-05-01",
+    "color": { "name": "Violet Pop", "hex": "#A855F7" }
+  },
+  {
+    "companyName": "TCS",
+    "designation": "System Analyst",
+    "startDate": "2015-12-01",
+    "endDate": "2018-04-01",
+    "color": { "name": "Amber Gold", "hex": "#F59E0B" }
+  }
+]

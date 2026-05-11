@@ -15,11 +15,38 @@ export type Scalars = {
   Date: { input: any; output: any; }
 };
 
+export type Color = {
+  __typename?: 'Color';
+  hex: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+};
+
 export type Contact = {
   __typename?: 'Contact';
   email: Scalars['String']['output'];
   phone?: Maybe<Scalars['String']['output']>;
   website?: Maybe<Scalars['String']['output']>;
+};
+
+export type Experience = {
+  __typename?: 'Experience';
+  color: Color;
+  companyName: Scalars['String']['output'];
+  designation: Scalars['String']['output'];
+  endDate?: Maybe<Scalars['Date']['output']>;
+  startDate: Scalars['Date']['output'];
+};
+
+export type ExperienceError = {
+  __typename?: 'ExperienceError';
+  message: Scalars['String']['output'];
+};
+
+export type ExperienceResult = ExperienceError | ExperienceValue;
+
+export type ExperienceValue = {
+  __typename?: 'ExperienceValue';
+  experience: Array<Experience>;
 };
 
 export type Image = {
@@ -43,6 +70,7 @@ export type ProfileValue = {
   image: Image;
   location: Scalars['String']['output'];
   name: Scalars['String']['output'];
+  shortBio: Scalars['String']['output'];
   skills: Skills;
   social: Social;
   tagline: Scalars['String']['output'];
@@ -51,6 +79,7 @@ export type ProfileValue = {
 
 export type Query = {
   __typename?: 'Query';
+  experience?: Maybe<ExperienceResult>;
   profile?: Maybe<ProfileResult>;
   techStack?: Maybe<TechStackResult>;
 };
@@ -74,6 +103,7 @@ export type Social = {
 export type TechStack = {
   __typename?: 'TechStack';
   name: Scalars['String']['output'];
+  theme: Theme;
   url: Scalars['String']['output'];
 };
 
@@ -89,12 +119,26 @@ export type TechStackValue = {
   stacks: Array<TechStack>;
 };
 
+export enum Theme {
+  All = 'all',
+  Dark = 'dark',
+  Light = 'light'
+}
+
+export type ExperienceAboutMeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ExperienceAboutMeQuery = { __typename?: 'Query', experience?:
+    | { __typename?: 'ExperienceError', message: string }
+    | { __typename?: 'ExperienceValue', experience: Array<{ __typename?: 'Experience', companyName: string, designation: string, endDate?: any | null, startDate: any, color: { __typename?: 'Color', hex: string } }> }
+   | null };
+
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProfileQuery = { __typename?: 'Query', profile?:
     | { __typename?: 'ProfileError', message: string }
-    | { __typename?: 'ProfileValue', name: string, bio: string, title: string, social: { __typename?: 'Social', github?: string | null, linkedin: string }, image: { __typename?: 'Image', alt: string, url: string } }
+    | { __typename?: 'ProfileValue', name: string, shortBio: string, bio: string, title: string, social: { __typename?: 'Social', github?: string | null, linkedin: string }, image: { __typename?: 'Image', alt: string, url: string } }
    | null };
 
 export type TechStackQueryVariables = Exact<{ [key: string]: never; }>;
@@ -102,5 +146,5 @@ export type TechStackQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type TechStackQuery = { __typename?: 'Query', techStack?:
     | { __typename?: 'TechStackError', message: string }
-    | { __typename?: 'TechStackValue', stacks: Array<{ __typename?: 'TechStack', name: string, url: string }> }
+    | { __typename?: 'TechStackValue', stacks: Array<{ __typename?: 'TechStack', name: string, url: string, theme: Theme }> }
    | null };
