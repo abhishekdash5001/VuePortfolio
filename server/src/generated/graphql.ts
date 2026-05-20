@@ -50,6 +50,30 @@ export type ExperienceValue = {
   experience: Array<Experience>;
 };
 
+export type Faq = {
+  __typename?: 'Faq';
+  faqItems: Array<FaqItem>;
+  tabName: Scalars['String']['output'];
+};
+
+export type FaqError = {
+  __typename?: 'FaqError';
+  message: Scalars['String']['output'];
+};
+
+export type FaqItem = {
+  __typename?: 'FaqItem';
+  answer: Scalars['String']['output'];
+  question: Scalars['String']['output'];
+};
+
+export type FaqResult = FaqError | FaqValue;
+
+export type FaqValue = {
+  __typename?: 'FaqValue';
+  faqs: Array<Faq>;
+};
+
 export type Image = {
   __typename?: 'Image';
   alt: Scalars['String']['output'];
@@ -81,6 +105,7 @@ export type ProfileValue = {
 export type Query = {
   __typename?: 'Query';
   experience?: Maybe<ExperienceResult>;
+  faq?: Maybe<FaqResult>;
   profile?: Maybe<ProfileResult>;
   techStack?: Maybe<TechStackResult>;
 };
@@ -201,6 +226,10 @@ export type ResolversUnionTypes<_RefType extends Record<string, unknown>> = {
     | ( ExperienceError )
     | ( ExperienceValue )
   ;
+  FaqResult:
+    | ( FaqError )
+    | ( FaqValue )
+  ;
   ProfileResult:
     | ( ProfileError )
     | ( ProfileValue )
@@ -222,6 +251,11 @@ export type ResolversTypes = {
   ExperienceError: ResolverTypeWrapper<ExperienceError>;
   ExperienceResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['ExperienceResult']>;
   ExperienceValue: ResolverTypeWrapper<ExperienceValue>;
+  Faq: ResolverTypeWrapper<Faq>;
+  FaqError: ResolverTypeWrapper<FaqError>;
+  FaqItem: ResolverTypeWrapper<FaqItem>;
+  FaqResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['FaqResult']>;
+  FaqValue: ResolverTypeWrapper<FaqValue>;
   Image: ResolverTypeWrapper<Image>;
   ProfileError: ResolverTypeWrapper<ProfileError>;
   ProfileResult: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['ProfileResult']>;
@@ -247,6 +281,11 @@ export type ResolversParentTypes = {
   ExperienceError: ExperienceError;
   ExperienceResult: ResolversUnionTypes<ResolversParentTypes>['ExperienceResult'];
   ExperienceValue: ExperienceValue;
+  Faq: Faq;
+  FaqError: FaqError;
+  FaqItem: FaqItem;
+  FaqResult: ResolversUnionTypes<ResolversParentTypes>['FaqResult'];
+  FaqValue: FaqValue;
   Image: Image;
   ProfileError: ProfileError;
   ProfileResult: ResolversUnionTypes<ResolversParentTypes>['ProfileResult'];
@@ -298,6 +337,30 @@ export type ExperienceValueResolvers<ContextType = any, ParentType extends Resol
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type FaqResolvers<ContextType = any, ParentType extends ResolversParentTypes['Faq'] = ResolversParentTypes['Faq']> = {
+  faqItems?: Resolver<Array<ResolversTypes['FaqItem']>, ParentType, ContextType>;
+  tabName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+};
+
+export type FaqErrorResolvers<ContextType = any, ParentType extends ResolversParentTypes['FaqError'] = ResolversParentTypes['FaqError']> = {
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type FaqItemResolvers<ContextType = any, ParentType extends ResolversParentTypes['FaqItem'] = ResolversParentTypes['FaqItem']> = {
+  answer?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  question?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+};
+
+export type FaqResultResolvers<ContextType = any, ParentType extends ResolversParentTypes['FaqResult'] = ResolversParentTypes['FaqResult']> = {
+  __resolveType: TypeResolveFn<'FaqError' | 'FaqValue', ParentType, ContextType>;
+};
+
+export type FaqValueResolvers<ContextType = any, ParentType extends ResolversParentTypes['FaqValue'] = ResolversParentTypes['FaqValue']> = {
+  faqs?: Resolver<Array<ResolversTypes['Faq']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type ImageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Image'] = ResolversParentTypes['Image']> = {
   alt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -329,6 +392,7 @@ export type ProfileValueResolvers<ContextType = any, ParentType extends Resolver
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   experience?: Resolver<Maybe<ResolversTypes['ExperienceResult']>, ParentType, ContextType>;
+  faq?: Resolver<Maybe<ResolversTypes['FaqResult']>, ParentType, ContextType>;
   profile?: Resolver<Maybe<ResolversTypes['ProfileResult']>, ParentType, ContextType>;
   techStack?: Resolver<Maybe<ResolversTypes['TechStackResult']>, ParentType, ContextType>;
 };
@@ -375,6 +439,11 @@ export type Resolvers<ContextType = any> = {
   ExperienceError?: ExperienceErrorResolvers<ContextType>;
   ExperienceResult?: ExperienceResultResolvers<ContextType>;
   ExperienceValue?: ExperienceValueResolvers<ContextType>;
+  Faq?: FaqResolvers<ContextType>;
+  FaqError?: FaqErrorResolvers<ContextType>;
+  FaqItem?: FaqItemResolvers<ContextType>;
+  FaqResult?: FaqResultResolvers<ContextType>;
+  FaqValue?: FaqValueResolvers<ContextType>;
   Image?: ImageResolvers<ContextType>;
   ProfileError?: ProfileErrorResolvers<ContextType>;
   ProfileResult?: ProfileResultResolvers<ContextType>;

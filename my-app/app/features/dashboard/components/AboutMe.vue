@@ -6,6 +6,7 @@ defineProps<{
   isLoading: boolean;
   experiences: ExperienceValue["experience"];
   bio: string | undefined;
+  carrierStartDate:Date
 }>();
 </script>
 
@@ -28,7 +29,7 @@ defineProps<{
     </section>
 
     <section class="experience">
-      <Experience :experiences="experiences" />
+      <Experience :experiences="experiences"   :carrier-start-date="carrierStartDate"/>
     </section>
   </div>
 </template>

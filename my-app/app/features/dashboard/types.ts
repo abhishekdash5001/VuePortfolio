@@ -1,9 +1,12 @@
+import type { AccordionItem } from '@nuxt/ui'
 import {
   type ProfileQuery,
   type ExperienceValue,
   type Social,
   type TechStackValue,
-  Theme
+  type FaqValue,
+  type FaqItem,
+  Theme,
 } from "~/graphql/generated";
 
 export type Profile = Extract<
@@ -14,9 +17,19 @@ export type Profile = Extract<
 export type { Social };
 export type { TechStackValue };
 export type { ExperienceValue };
-export {Theme}
+export type { FaqValue };
+export { Theme };
 
 export type TechStack = TechStackValue["stacks"][number];
+export type FaqTab= FaqValue['faqs'][number]
+
+export type {FaqItem}
+
+export type FaqTabUI= {
+  label:string
+  items:AccordionItem[]
+ 
+}
 
 export type NavigationItem = {
   label: string;
@@ -26,5 +39,6 @@ export type NavigationItem = {
 export const ERRORS = {
   techStack: " Failed to fetch techStack details",
   profile: "Failed to fetch Profiles details",
-  experienceAboutMe:'Failed to fetch experience details'
+  experienceAboutMe: "Failed to fetch experience details",
+  faqs: "Failed to fetch FAQS",
 } as const;

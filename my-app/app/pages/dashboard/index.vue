@@ -4,32 +4,35 @@ import PrimaryNavigation from "~/features/dashboard/components/PrimaryNavigation
 import HeroSection from "~/features/dashboard/components/HeroSection.vue";
 import Ecosystem from "~/features/dashboard/components/Ecosystem.vue";
 import AboutMe from "~/features/dashboard/components/AboutMe.vue";
+import FAQ from "~/features/dashboard/components/FAQ.vue";
 
 import { useProfile } from "~/features/dashboard/composables/useProfile";
 import { useTechStacks } from "~/features/dashboard/composables/useTechStacks";
 import { useExperienceAboutMe } from "~/features/dashboard/composables/useExperienceAboutMe";
+import { useFAQs } from "~/features/dashboard/composables/useFAQs";
 
 const profile = useProfile();
 const techStack = useTechStacks();
 const experienceAboutMe = useExperienceAboutMe();
+const faqs = useFAQs();
 
-const showAboutMe = computed(
-  () =>
-   Boolean( profile.state &&
+const showAboutMe = computed(() =>
+  Boolean(
+    profile.state &&
     profile.state.bio !== "" &&
     experienceAboutMe.state.experience.length > 0,
-));
+  ),
+);
 
 const isAboutMeLoading = computed(
   () => experienceAboutMe.loading.value || profile.loading.value,
 );
 
-
-
 onMounted(async () => {
   await profile.execute();
   await techStack.execute();
   await experienceAboutMe.execute();
+  await faqs.execute();
 });
 </script>
 
@@ -61,9 +64,14 @@ onMounted(async () => {
       <template v-if="showAboutMe">
         <AboutMe
           :bio="profile.state?.bio"
+          :carrier-start-date="profile.state?.careerStartDate"
           :experiences="experienceAboutMe.state.experience"
           :isLoading="isAboutMeLoading"
         />
+      </template>
+
+      <template v-if="faqs.state.faqs.length > 0">
+        <FAQ :faqs="faqs.state.faqs" />
       </template>
     </main>
   </UContainer>
