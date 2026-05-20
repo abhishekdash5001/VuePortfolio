@@ -75,6 +75,7 @@ onMounted(() => {
               id="links"
               class="flex flex-wrap gap-x-6 gap-y-3 mt-4 flex-col justify-center items-center"
             >
+  
               <div id="social" class="gap-x-4 inline-flex mt-4">
                 <template v-if="profile.social.github">
                   <ULink :href="profile.social.github">

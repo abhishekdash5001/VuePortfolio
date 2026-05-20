@@ -49,6 +49,30 @@ export type ExperienceValue = {
   experience: Array<Experience>;
 };
 
+export type Faq = {
+  __typename?: 'Faq';
+  faqItems: Array<FaqItem>;
+  tabName: Scalars['String']['output'];
+};
+
+export type FaqError = {
+  __typename?: 'FaqError';
+  message: Scalars['String']['output'];
+};
+
+export type FaqItem = {
+  __typename?: 'FaqItem';
+  answer: Scalars['String']['output'];
+  question: Scalars['String']['output'];
+};
+
+export type FaqResult = FaqError | FaqValue;
+
+export type FaqValue = {
+  __typename?: 'FaqValue';
+  faqs: Array<Faq>;
+};
+
 export type Image = {
   __typename?: 'Image';
   alt: Scalars['String']['output'];
@@ -80,6 +104,7 @@ export type ProfileValue = {
 export type Query = {
   __typename?: 'Query';
   experience?: Maybe<ExperienceResult>;
+  faq?: Maybe<FaqResult>;
   profile?: Maybe<ProfileResult>;
   techStack?: Maybe<TechStackResult>;
 };
@@ -133,12 +158,20 @@ export type ExperienceAboutMeQuery = { __typename?: 'Query', experience?:
     | { __typename?: 'ExperienceValue', experience: Array<{ __typename?: 'Experience', companyName: string, designation: string, endDate?: any | null, startDate: any, color: { __typename?: 'Color', hex: string } }> }
    | null };
 
+export type FaqQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FaqQuery = { __typename?: 'Query', faq?:
+    | { __typename?: 'FaqError', message: string }
+    | { __typename?: 'FaqValue', faqs: Array<{ __typename?: 'Faq', tabName: string, faqItems: Array<{ __typename?: 'FaqItem', question: string, answer: string }> }> }
+   | null };
+
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProfileQuery = { __typename?: 'Query', profile?:
     | { __typename?: 'ProfileError', message: string }
-    | { __typename?: 'ProfileValue', name: string, shortBio: string, bio: string, title: string, social: { __typename?: 'Social', github?: string | null, linkedin: string }, image: { __typename?: 'Image', alt: string, url: string } }
+    | { __typename?: 'ProfileValue', name: string, shortBio: string, bio: string, careerStartDate: any, title: string, social: { __typename?: 'Social', github?: string | null, linkedin: string }, image: { __typename?: 'Image', alt: string, url: string } }
    | null };
 
 export type TechStackQueryVariables = Exact<{ [key: string]: never; }>;

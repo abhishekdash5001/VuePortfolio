@@ -1,0 +1,100 @@
+[
+  {
+    "tabName": "About Me",
+    "faqItems": [
+      {
+        "question": "Who are you and what do you specialize in?",
+        "answer": "I’m Abhishek Dash, a  Developer/Tech Lead specializing in Next.js, React, Vue, GraphQL, and scalable frontend architecture."
+      },
+      {
+        "question": "What is your experience level?",
+        "answer": "I have experience building production-grade applications, leading frontend architecture, and optimizing performance for modern web platforms."
+      },
+      {
+        "question": "What industries have you worked in?",
+        "answer": "I’ve worked on CMS platforms, enterprise applications, and high-performance web products."
+      }
+    ]
+  },
+  {
+    "tabName": "Skills",
+    "faqItems": [
+      {
+        "question": "What is your tech stack?",
+        "answer": "Next.js, React, Vue, TypeScript, GraphQL, Node.js, and modern frontend tooling."
+      },
+      {
+        "question": "Do you work with CMS platforms?",
+        "answer": "Yes, I have experience with headless CMS like Sanity and Contentful, including schema design and content modeling."
+      },
+      {
+        "question": "Do you handle backend development?",
+        "answer": "Primarily frontend-focused, but I’m comfortable working with APIs, Node.js services, and backend integrations."
+      }
+    ]
+  },
+  {
+    "tabName": "Work",
+    "faqItems": [
+      {
+        "question": "What kind of projects do you work on?",
+        "answer": "I build scalable web apps, CMS-driven platforms, and performance-focused frontend systems."
+      },
+      {
+        "question": "How do you approach a new project?",
+        "answer": "I start with requirements, design a scalable architecture, build iteratively, and optimize for performance and maintainability."
+      },
+      {
+        "question": "Do you work independently or in teams?",
+        "answer": "Both. I’ve worked in cross-functional teams and also independently delivered complete projects."
+      }
+    ]
+  },
+  {
+    "tabName": "Performance",
+    "faqItems": [
+      {
+        "question": "Can you improve website performance?",
+        "answer": "Yes, I specialize in improving Core Web Vitals like LCP, CLS, and INP."
+      },
+      {
+        "question": "What tools do you use for performance monitoring?",
+        "answer": "I use Lighthouse and Chrome DevTools for lab testing, and Datadog RUM for real user monitoring in production to capture actual performance metrics and user behavior."
+      },
+      {
+        "question": "Do you handle SEO along with performance?",
+        "answer": "Yes, I ensure applications are optimized for both performance and search engine visibility."
+      }
+    ]
+  },
+  {
+    "tabName": "Hiring",
+    "faqItems": [
+      {
+        "question": "Are you available for freelance or full-time roles?",
+        "answer": "Open to selective freelance and full-time opportunities."
+      },
+      {
+        "question": "What is your preferred work model?",
+        "answer": "Flexible with remote and hybrid setups depending on the project."
+      },
+      {
+        "question": "What is your engagement process?",
+        "answer": "Discuss requirements, align on scope, execute in iterations, and maintain clear communication throughout."
+      }
+    ]
+  },
+  {
+    "tabName": "Contact",
+    "faqItems": [
+      {
+        "question": "How can I contact you?",
+        "answer": "You can reach out via the contact form on this site or connect with me on LinkedIn."
+      },
+      {
+        "question": "How quickly do you respond?",
+        "answer": "Typically within 24 hours."
+      }
+    ]
+  }
+]

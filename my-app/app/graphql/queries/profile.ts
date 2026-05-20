@@ -14,7 +14,7 @@ export const PROFILE_QUERY = gql`
      }
         shortBio
         bio
-       
+       careerStartDate
          title
         image{
         alt
